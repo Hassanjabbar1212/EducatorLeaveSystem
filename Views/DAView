@@ -1,0 +1,90 @@
+@{
+    ViewData["Title"] = "Employee Data";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Data</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        /* Style for the container */
+        .container {
+            margin: 20px;
+        }
+
+        /* Style for the employee container */
+        .employee-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Style for the table */
+        .employee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+            /* Style for table headers */
+            .employee-table th {
+                background-color: #f2f2f2;
+                padding: 12px;
+                border: 1px solid #ddd;
+            }
+
+            /* Style for table cells */
+            .employee-table td {
+                padding: 12px;
+                border: 1px solid #ddd;
+            }
+
+            /* Style for alternating row colors */
+            .employee-table tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+
+        /* Style for the employee info section */
+        .employee-info {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Style for the leave info section */
+        .leave-info {
+            margin-top: 10px;
+        }
+
+        /* Add margin between select and data */
+        .margin-bottom-20 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row margin-bottom-20">
+            <div class="col-md-6">
+                <label for="employeeDropdown">Select Employee:</label>
+                <select id="employeeDropdown">
+                    <option value="">-- Select Employee --</option>
+                    @foreach (var employee in ViewBag.EmployeeNames)
+                    {
+                        <option value="@employee.Value">@employee.Text</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="employeeDataContainer" class="col-md-6"></div>
+        </div>
+    </div>
+
+    <script src="/js/DA.js"></script>
+</body>
+</html>
+
