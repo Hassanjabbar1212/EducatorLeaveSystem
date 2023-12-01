@@ -1,0 +1,25 @@
+﻿@model List<myWebApp.ViewModels.NewFolder.RemainingDaysViewModel>
+
+<h2>Remaining Days</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Type Name</th>
+            <th>Opening Days</th>
+            <th>Utilized Days</th>
+            <th>Remaining Days</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TypeName</td>
+                <td>@item.OpeningDays</td>
+                <td>@item.UtilizedDays</td>
+                <td>@item.RemainingDays</td>
+            </tr>
+        }
+    </tbody>
+</table>

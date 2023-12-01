@@ -1,0 +1,54 @@
+﻿@model List<myWebApp.ViewModels.NewFolder.TeacherViewModel>
+
+<style>
+    #entryTable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        #entryTable th,
+        #entryTable td {
+            border: 1px solid #ddd;
+            padding: 6px; /* Adjusted padding */
+            text-align: left;
+        }
+
+        #entryTable th {
+            background-color: #f2f2f2;
+        }
+
+        #entryTable tbody tr {
+            margin-bottom: 5px; /* Adjusted margin between rows */
+        }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table" id="entryTable">
+                <thead>
+                    <tr>
+                        <th>Approved/Reject By</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.EmployeeName</td>
+                            <td>@item.Status</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-center">
+            <a asp-action="Remaningdays" asp-controller="Leave" class="btn btn-primary btn-sm">Remainingdays</a>
+        </div>
+    </div>
+</div>

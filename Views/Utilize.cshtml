@@ -1,0 +1,63 @@
+﻿@model Utilize
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Include Select2 CSS and JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success">
+        @ViewBag.SuccessMessage
+    </div>
+}
+<div class="container">
+<form asp-action="Utilize" asp-controller="Leave">
+        <div class="form-group">
+            <label asp-for="GroupID" class="control-label" for="group">Select Group</label>
+            <select asp-for="GroupID" class="form-control" asp-items="ViewBag.MatchingGroups" id="groupDropdown"></select>
+            <span asp-validation-for="GroupID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TypeID" class="control-label" for="leaveType">Select LeaveType</label>
+            <select asp-for="TypeID" class="form-control" asp-items="ViewBag.LeaveTypes" id="leaveTypeDropdown"></select>
+            <span asp-validation-for="TypeID" class="text-danger"></span>
+        </div>
+
+<div class="form-group">
+    <label asp-for="SubstituteID" class="control-label" for="substituteTeacher">Select Substitute Teacher</label>
+            <select asp-for="SubstituteID" class="form-control" id="employee">
+                <option value="">-- Select Employee --</option>
+                @for (int i = 0; i < ViewBag.EmployeeNames.Count; i++)
+                {
+                    <option value="@ViewBag.EmployeeNames[i].Value">@ViewBag.EmployeeNames[i].Text</option>
+                }
+            </select>
+    <span asp-validation-for="SubstituteID" class="text-danger"></span>
+</div>
+    <div class="form-group">
+        <label asp-for="Reason">Enter Reason</label>
+        <input asp-for="Reason" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Days">Enter Days</label>
+        <input asp-for="Days" class="form-control" />
+    </div>
+ <button type="submit" class="btn btn-success">Submit</button>
+</form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Initialize Select2 for each dropdown
+        $('#groupDropdown').select2();
+        $('#leaveTypeDropdown').select2();
+        $('#substituteTeacherDropdown').select2();
+    });
+</script>
+
+
+

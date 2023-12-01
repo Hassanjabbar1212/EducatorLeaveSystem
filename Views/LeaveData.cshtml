@@ -1,0 +1,32 @@
+﻿@*@model list<mywebapp.viewmodels.newfolder.utilizeviewmodel>
+
+div class="table-responsive">
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>employee name</th>
+            <th>group name</th>
+            <th>type name</th>
+            <th>reason</th>
+            <th>days</th>
+            <th>substitute id</th>
+            <th>year</th>
+            <th>action</th>
+        </tr>
+    </thead>
+   <tbody>
+        @foreach (var item in model)
+        {
+            <tr>
+                <td>@item.employeename</td>
+                <td>@item.groupname</td>
+                <td>@item.typename</td>
+                <td>@item.reason</td>
+                <td>@item.days</td>
+                <td>@item.substituteid</td>
+                <td>@item.year</td>
+                <!-- other cells -->
+            </tr>
+        }
+    </tbody>
+    </table>*@

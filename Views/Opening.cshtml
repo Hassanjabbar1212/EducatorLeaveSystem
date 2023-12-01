@@ -1,0 +1,50 @@
+﻿@model Opening
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Group Leave</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Opening Balance</h2>
+
+        <div class="form-group">
+            <label asp-for="EmpID" class="control-label" for="employee">Select Employee</label>
+            <select asp-for="EmpID" class="form-control" id="employee">
+                <option value="">-- Select Employee --</option>
+                @for (int i = 0; i < ViewBag.EmployeeNames.Count; i++)
+                {
+                    <option value="@ViewBag.EmployeeNames[i].Value">@ViewBag.EmployeeNames[i].Text</option>
+                }
+            </select>
+            <span asp-validation-for="EmpID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="GroupID" class="control-label" for="group">Select Group</label>
+            <select asp-for="GroupID" class="form-control" asp-items="ViewBag.GroupName" id="group"></select>
+            <span asp-validation-for="GroupID" class="text-danger"></span>
+        </div>
+
+        <!-- Table to display added entries -->
+        <table class="table" id="entryTable">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Group Name</th>
+                    <th>Leave Type</th>
+                    <th>Allocate Days</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Leave types will be displayed here -->
+            </tbody>
+        </table>
+        <button class="btn btn-success" id="submitButton">Submit</button>
+        </div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/Index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

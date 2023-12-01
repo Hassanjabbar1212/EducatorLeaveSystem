@@ -1,0 +1,12 @@
+﻿@model LeaveType
+
+<div>
+    <h3>Delete Leave</h3>
+    <p>Are you sure you want to delete</p>
+    <form method="post" asp-action="DeleteConfirmed" asp-controller="Leave" asp-route-id = "@Model.Id">
+        <button type="submit" class=" btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-primary">Cancel</a>
+    </form>
+
+
+</div>

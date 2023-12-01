@@ -1,0 +1,52 @@
+﻿@model List<myWebApp.ViewModels.NewFolder.UtilizeViewModel>
+<html>
+   <body>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Employee Name</th>
+            <th>Group Name</th>
+            <th>Type Name</th>
+            <th>Reason</th>
+            <th>Days</th>
+            <th>Substitute Teacher</th>
+            <th>Year</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.EmployeeName</td>
+                    <td>@item.GroupName</td>
+                    <td>@item.TypeName</td>
+                    <td>@item.Reason</td>
+                    <td>@item.Days</td>
+                    <td>@item.Substitute</td>
+                    <td>@item.Year</td>
+                    <td>
+                        <form asp-action="ProcessApproval" method="post" data-utilize-id="@item.Id" data-action="approve">
+                            <input type="hidden" name="utilizeId" value="@item.Id" />
+                            <input type="hidden" name="employeeId" value="@item.EmployeeID" />
+                            <input type="hidden" name="TypeID" value="@item.TypeID" />
+                            <input type="hidden" name="Days" value="@item.Days" />
+                            <input type="hidden" name="isApproved" value="true" />
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+                        <form asp-action="ProcessApproval" method="post" data-utilize-id="@item.Id" data-action="reject">
+                            <input type="hidden" name="utilizeId" value="@item.Id" />
+                            <input type="hidden" name="employeeId" value="@item.EmployeeID" />
+                            <input type="hidden" name="isApproved" value="false" />
+                            <button type="submit" class="btn btn-danger">Reject</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/OpeningBalnce"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

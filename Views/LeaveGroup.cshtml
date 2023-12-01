@@ -1,0 +1,161 @@
+﻿@model LeaveGroup
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+       /* #container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }*/
+
+            #container h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+                color: #007bff;
+            }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                font-weight: bold;
+            }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button#addButton, button#submitButton {
+            margin-top: 10px;
+        }
+
+        .alert {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+
+
+    <div class="container">
+        
+        
+        <h2>Leave Groups</h2>
+        
+        <form asp-controller="Leave" asp-action="SubmitGroup" method="post">
+        
+            <div class="form-group">
+                <label for="groupName">Group Name:</label>
+                <input type="text" id="groupName" name="groupName" class="form-control" />
+            
+            </div>
+            <button id="SubmitGroup" class="btn btn-success">Add Group Name</button>
+        
+        </form>
+
+        <br />
+
+        <div class="form-group">
+        
+            <div class="search_cat d-flex justify-content-end">
+                <label asp-for="Id" class="control-label">Select Group Type</label>
+                <select select2 asp-for="Id" class="form-select wide" asp-items="ViewBag.GroupName"></select>
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+        
+        </div>
+        
+        
+        <div class="form-group">
+            <input type="text" id="typeName" placeholder="Type Name" class="form-control" />
+        </div>
+        
+        <div class="form-group">
+            <input type="number" id="numberOfDays" placeholder="Number of Days" class="form-control" />
+        </div>
+        
+        <button id="addButton">Add Leave Type</button>
+        <br/>
+        
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>Type Name</th>
+                    <th>Number of Days</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button id="submitButton">Submit</button>
+        <br/>
+        <br/>
+    <a href="@Url.Action("Index", "Leave")" class="btn btn-secondary">Back</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/Leave.js"></script>
+</body>
+</html>
