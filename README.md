@@ -102,6 +102,4 @@ This project is licensed under the [MIT License](LICENSE.md) - see the [LICENSE.
 
 Feel free to reach out if you have any questions or suggestions:
 
-- Your Name
-- Email: your.email@example.com
-- Twitter: [@yourtwitterhandle](https://twitter.com/yourtwitterhandle)
+- Email: Hassanjabbar2017@gmail.com
